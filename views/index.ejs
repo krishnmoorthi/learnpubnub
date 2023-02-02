@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>
+    <%= title %>
+  </title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+  <link rel='stylesheet' href='/stylesheets/product.css' />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.7.2.2.js"></script>
+  <script src="/javascripts/pubnubclient.js"></script>
+</head>
+
+<body>
+  <div class="jumbotron">
+    <h1>
+      <%= title %>
+    </h1>
+    <p>India's most popular Brands - auction using <a href="https://www.pubnub.com/">PubNub</a></p>
+    <span class="user" id="user"><i class="material-icons" style="font-size:36px">person</i></span>
+  </div>
+  <div class="container">
+    <div class="row">
+      <% products.forEach(function(product){ %>
+        <div class="col-sm-4">
+          <div class="card card-padding">
+            <div class="card-header">
+              <h3>
+                <%= product.name %>
+                  <span class="sku" id="sku">&nbsp;&nbsp;&nbsp;
+                    <%= product.ID %>
+                  </span>
+              </h3>
+            </div>
+            <div class="card-body">
+              <img src="/images/<%= product.image%>" width="250" height="120">
+            </div>
+            <div class="card-footer">
+              <span class="price-tag">price value:&nbsp;</span><span class="price-value-<%= product.ID %>">&#x20B9;<%=
+                  product.price %>
+              </span>&nbsp;&nbsp;Qty:&nbsp;</span>
+              <span class="bid-val-tag">
+                <%= product.qty %>
+              </span><br>
+              <input type="text" id="bidPrice" name="<%= product.ID %>_bidPrice">
+              <button type="button" class="btn btn-primary js_bid" data-style="<%= product.ID %>"
+                data-productName="<%= product.name %>">BID</button>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+    </div>
+  </div>
+  <div class="modal fade bd-example-modal-lg" tabindex="-1" id="homeModal">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content modal-lg">
+        <div class="modal-header">
+          <h3 class="modal-title"> Welcome to WineWorld !</h3>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body">
+          <input type="email" id="email" class="form-control" placeholder="Enter your email"
+            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"> <span class="err-msg hide " id="validation_msg">Please
+            enter valid email !</span><br><br>
+          <button type="email" class="btn btn-primary" id="signup">Sign me up</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <footer class="bg-light text-center text-lg-start">
+    <!-- Copyright -->
+    <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+      © 2023 Copyright:
+      <a class="text-dark" href="http://WKWIN0280068.global.publicisgroupe.net:3000">WinesWorld.com</a>
+    </div>
+    <!-- Copyright -->
+  </footer>
+</body>
+
+</html>

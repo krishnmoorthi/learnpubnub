@@ -1,0 +1,44 @@
+body {
+  padding: 5px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.card-padding {
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+img {
+  border-radius: 8px;
+}
+
+.price-tag {
+  font-weight: bold;
+}
+
+.price-value {
+  font-weight: bold;
+  color: #747576;
+}
+
+.bid-val-tag {
+  color: gray;
+}
+
+.sku {
+  font-size: small;
+  font-weight: bold;
+  color: #0b4369;
+}
+
+.user {
+  color: green;
+}
+
+.err-msg {
+  color: red;
+}
